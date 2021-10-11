@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #navbar {
+            display: grid;
+            grid-template-columns: 5% 10% 60% 12% 8%;
+            grid-gap: 1%;
+            align-items: center;
+            text-align: center;
+            background-color: #2b3183;
+            color: white;
+            padding: 13px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        #navbar #searchItem {
+            outline-style: none;
+        }
+
+        #navbar>div:nth-child(2)>div:nth-child(1) {
+            font-size: 30px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 1000;
+            cursor: pointer;
+        }
+
+        #navbar>div:nth-child(2)>div:nth-child(2) {
+            text-align: right;
+            font-size: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #navbar .navinnerdiv>div {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .navicon {
+            cursor: pointer;
+        }
+
+        #navbar .navinnerdiv>div:last-child {
+            margin-top: 4px;
+        }
+
+        #navbar .navText {
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        #navbar input {
+            width: 90%;
+            height: 38px;
+            border-radius: 5px;
+            border: none;
+            padding-left: 10px;
+        }
+
+        #navbar .menu {
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+
+        #data {
+            width: 400px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #data img {
+            width: 230px;
+        }
+
+        #data p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <div>
+            <span class="material-icons menu">menu</span>
+        </div>
+        <div>
+            <div>AllMovie</div>
+            <div>BETA</div>
+        </div>
+        <div><input id="searchItem" type="text" placeholder="Search movie, show, and web series..."></div>
+        <div class="signIn navinnerdiv navicon">
+            <span class="material-icons">perm_identity</span>
+            <div class="navText">
+                <div>Sign In / Sign Up</div>
+                <div id="in"></div>
+            </div>
+        </div>
+        <div class="cart navinnerdiv navicon">
+            <span class="material-icons">perm_identity</span>
+            <div class="navText">Login</div>
+        </div>
+        <div id="outDiv"></div>
+    </div>
+    <div id="data"></div>
+</body>
+
+</html>
+
+<script>
+
+
+    let container = document.getElementById("data");
+
+    let Psearch = document.getElementById("searchItem");
+    Psearch.onkeyup = function (e) {
+        console.log("hi");
+        if (e.keyCode === 13) {
+            console.log(e.target.value);
+            getWeather(e.target.value);
+
+        }
+    }
+
+    async function getWeather(srch) {
+
+        let search = srch
+        let res = await fetch(`http://www.omdbapi.com/?t=${search}&apikey=25e31a8f`
+        );
+        let data = await res.json();
+        console.log(data);
+        showMovie(data);
+    }
+
+
+    function showMovie(el) {
+        if (el.Title != undefined) {
+            container.innerHTML = null;
+            let relDate = document.createElement('p');
+            relDate.innerText = `Relese Date: ${el.Released}`;
+            let name = document.createElement('p');
+            name.innerText = `Name: ${el.Title}`;
+            name.style.color = "green"
+
+            let rating = document.createElement('p');
+            rating.innerText = `Rating: ${el.imdbRating}`;
+            rating.style.color = "blue"
+
+            container.append(name, rating,relDate);
+        }else{
+            container.innerHTML = null;
+            let img = document.createElement("img");
+            img.src = "https://schoolsresult.neocities.org/page-not-found.png";
+            container.append(img);
+        }
+
+    }
+
+
+</script>
