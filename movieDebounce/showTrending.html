@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            margin: 5% 5% 10% 5%;
+            height: 600px;
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20%;
+            grid-gap: 5%;
+            justify-content: center;
+            text-align: center;
+        }
+
+        img {
+            width: 80%;
+            height: 60%;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="searchMovie()">Show trending Movies</button>
+    <div id="container"></div>
+</body>
+
+</html>
+
+<script>
+
+    let container = document.getElementById("container");
+
+    async function searchMovie(movie_name) {
+        try {
+            let res = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=fa0e066b17bcda94279c64c0fe22e570&`);
+
+            let data = await res.json();
+            data = data.results;
+            console.log(data);
+
+            data.forEach(el => {
+                if (el.title != undefined) {
+                    let div = document.createElement("div");
+
+                    let img = document.createElement("img");
+                    img.src = `https://image.tmdb.org/t/p/w500${el.poster_path}`;
+
+                    let title = document.createElement('p');
+                    title.innerText = el.title;
+
+                    let reldate=document.createElement('p');
+                    reldate.innerText=el.release_date;
+
+                    let rating=document.createElement('p');
+                    rating.innerText=el.vote_average;
+
+                    div.append(img, title,reldate,rating);
+                    container.append(div);
+                    console.log(el.poster_path)
+                }
+            });
+
+        }
+        catch (e) {
+            console.log("not a user");
+        }
+
+    }
+
+
+</script>
