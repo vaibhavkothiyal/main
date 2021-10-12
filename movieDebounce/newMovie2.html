@@ -32,7 +32,6 @@
         <input oninput="debounce(main,1000)" type="text" name="" id="movie" placeholder="movie search">
         <div id="movies">
         </div>
-        <button onclick="showPopulMov()" id="popularMov">Popular Movies</button>
 
     </div>
 </body>
@@ -42,15 +41,16 @@
 <script>
 
     let movies_div = document.getElementById("movies");
-    let container=document.getElementById("container");
+    let container = document.getElementById("container");
     var timerId;
 
     async function searchMovie(movie_name) {
         try {
             let res = await fetch(`http://www.omdbapi.com/?s=${movie_name}&apikey=25e31a8f`)
+            // let res = await fetch(`http://www.omdbapi.com/?t=${movie_name}&apikey=25e31a8f`);
 
             let data = await res.json();
-            // console.log(data);
+            console.log("data is",data);
             return data;
         }
         catch (e) {
@@ -59,6 +59,7 @@
 
     }
     function appendMovie(movies) {
+        // console.log("here",movies);
         if (movies === undefined) {
             return false
         }
@@ -82,8 +83,7 @@
 
         let movies_data = res.Search;
         appendMovie(movies_data);
-        // console.log(res.Search);
-        // console.log(res);
+        console.log("here ser",res);
     }
 
 
@@ -98,21 +98,16 @@
     }
 
     function showSelectedMovie(el) {
-        console.log(el);
-        container.innerHTML=null;
+        container.innerHTML = null;
         let div = document.createElement("div");
         let img = document.createElement("img");
         img.src = el.Poster;
         let relDate = document.createElement('p');
-        relDate.innerText = `Relese Date: ${el.Released}`;
+        relDate.innerText = `Relese Year: ${el.Year}`;
         let name = document.createElement('p');
         name.innerText = `Name: ${el.Title}`;
         name.style.color = "green"
-
-        let rating = document.createElement('p');
-        rating.innerText = `Rating: ${el.imdbRating}`;
-        rating.style.color = "blue"
-        container.append(img, name, rating, relDate);
+        container.append(img, name,relDate);
     }
 
 </script>
