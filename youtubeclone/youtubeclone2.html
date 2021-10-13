@@ -20,6 +20,7 @@
             grid-template-columns: repeat(4, 23%);
             grid-gap: 2%;
             margin-top: 10px;
+            padding: 20px;
         }
 
         #navbar {
@@ -82,7 +83,8 @@
             border: none;
             padding-left: 10px;
         }
-        #youtube_txt{
+
+        #youtube_txt {
             font-size: 20px;
             font-weight: 600;
         }
@@ -125,6 +127,14 @@
 
 
 <script>
+
+    async function searchVideos1(query) {
+        let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=""&type=video&key=AIzaSyCM9L59GMahuoWDF8YXDHTvRGRgeCHW0-w&maxResults=20&videoEmbeddable=true`)
+        let data = await res.json();
+        console.log(data);
+        appendVideos(data.items);
+    }
+    searchVideos1();
 
     let Psearch = document.getElementById("searchItem");
     Psearch.onkeyup = function (e) {
