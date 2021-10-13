@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #252525;
+        }
+
+        #videos {
+            display: grid;
+            grid-template-columns: repeat(4, 23%);
+            grid-gap: 2%;
+            margin-top: 10px;
+        }
+
+        #navbar {
+            display: grid;
+            grid-template-columns: 5% 5% 10% 54% 4% 4% 4% 4% 4%;
+            /* grid-gap: 1%; */
+            align-items: center;
+            text-align: center;
+            background-color: #252525;
+            color: white;
+            height: 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            border: 1px solid white;
+        }
+
+        #navbar #searchItem {
+            outline-style: none;
+            background-color: rgb(26, 26, 26);
+            color: white;
+        }
+
+        #navbar>div:nth-child(2)>div:nth-child(1) {
+            font-size: 30px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 1000;
+            cursor: pointer;
+        }
+
+        #navbar>div:nth-child(2)>div:nth-child(2) {
+            text-align: right;
+            font-size: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #navbar .navinnerdiv>div {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .navicon {
+            cursor: pointer;
+        }
+
+        #navbar .navinnerdiv>div:last-child {
+            margin-top: 4px;
+        }
+
+        #navbar .navText {
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        #navbar input {
+            width: 90%;
+            height: 38px;
+            border-radius: 5px;
+            border: none;
+            padding-left: 10px;
+        }
+        #youtube_txt{
+            font-size: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <div>
+            <span class="material-icons menu">menu</span>
+        </div>
+        <div>
+            <span class="material-icons">smart_display</span>
+        </div>
+
+        <div id="youtube_txt">
+            <div>YouTube</div>
+        </div>
+        <div><input id="searchItem" type="text" placeholder="Search"></div>
+        <div class="signIn navinnerdiv navicon">
+            <span class="material-icons">mic</span>
+        </div>
+        <div class="signIn navinnerdiv navicon">
+            <span class="material-icons">video_call</span>
+        </div>
+        <div class="cart navinnerdiv navicon">
+            <span class="material-icons">widgets</span>
+        </div>
+        <div class="cart navinnerdiv navicon">
+            <span class="material-icons">notifications</span>
+        </div>
+        <div class="cart navinnerdiv navicon">
+            <span class="material-icons">account_circle</span>
+        </div>
+    </div>
+    <div id="videos"></div>
+</body>
+
+</html>
+
+
+<script>
+
+    let Psearch = document.getElementById("searchItem");
+    Psearch.onkeyup = function (e) {
+        console.log("hi");
+        if (e.keyCode === 13) {
+            console.log(e.target.value);
+            searchVideos(e.target.value);
+
+        }
+    }
+
+    let videos = document.getElementById("videos");
+
+    async function searchVideos(query) {
+        let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${query}&type=video&key=AIzaSyBJB84DviNtOYbZsMKY1p91q0e024rDWXQ&maxResults=20&videoEmbeddable=true`)
+        let data = await res.json();
+        console.log(data);
+        appendVideos(data.items);
+    }
+
+    function appendVideos(video_data) {
+        videos.innerHTML = null;
+        video_data.forEach(({ id: { videoId } }) => {
+            console.log(videoId);
+
+            let div = document.createElement("div");
+            div.innerHTML = `<iframe width="300" height="170" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+            videos.append(div);
+        });
+    }
+</script>
+
+</script>
