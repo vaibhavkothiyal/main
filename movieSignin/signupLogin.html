@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,400;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: sans-serif;
+            background: #F6F6F7;
+        }
+        #signup-form{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            align-items: center;
+        }
+        input{
+            margin-top: 20px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SignUp Form</h1>
+    <form id="signup-form" onsubmit="Signup(event)" id='signup-form'>
+        <input type="text" placeholder="name"  id="name"/>
+        <input type="email" placeholder="email" id="email"/>
+        <input type="password" placeholder="password" id="password"/>
+        <input type="text" placeholder="username" id="username"/>
+        <input type="number" placeholder="mobile" id="mobile"/>
+        <input type="text" placeholder="description" id="description"/>
+        <input type="submit" />
+      </form>
+   <h1>Login Form</h1>
+      <form action="" onsubmit="login(event)" id="login_form">
+        <input type="text" placeholder="username" id="user"/>
+        <input type="password" placeholder="password" id="pass"/>
+        <input type="submit">
+      </form>
+    <script>
+     function Signup(e)
+     {
+         e.preventDefault()
+         let form = document.getElementById('signup-form')
+         let user_data = {
+            name: form.name.value,
+            email:form.email.value,
+            password:form.password.value,
+            username:form.username.value,
+            mobile:form.mobile.value,
+            description: form.description.value
+         }
+         user_data = JSON.stringify(user_data);
+         fetch('https://masai-api-mocker.herokuapp.com/auth/register',{
+             method: "POST",
+             body: user_data,
+             headers:{
+                 "Content-Type":"application/json",
+             },
+         }).then((res) => {
+             return res.json()
+         }).then((res)=>{
+          console.log("res: ",res);
+         })
+         .catch((err) =>{
+             console.log("err: ",err)
+         })
+     }
+     function login(e){
+        e.preventDefault();
+        let form = document.getElementById('login_form')
+        let user_data ={
+            username: form.user.value,
+            password:form.pass.value
+        }
+        let data_to_send = JSON.stringify(user_data);
+        console.log(user_data)
+        fetch('https://masai-api-mocker.herokuapp.com/auth/login',{
+        method:'POST',
+        body:data_to_send,
+        headers:{
+            "Content-Type":"application/json"
+        },
+        }).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res.token)
+            fetchmyData(user_data.username, res.token)
+        }).catch((err)=>{
+            console.log(err)
+        })
+     }
+     function fetchmyData(username, token){
+        fetch(`https://masai-api-mocker.herokuapp.com/user/${username}`,{
+            headers:{
+                "content-Type":"application/json",
+                Authorization:`Bearer ${token}`
+            }
+        })
+        .then((res)=>{
+            return res.json();
+        })
+        .then((res) =>{
+            console.log("res: ", res);
+            var ursname=res.name;
+            let chkUsr=localStorage.getItem("userName");
+            if(chkUsr!=null){
+                chkUsr=null;
+            }
+            localStorage.setItem("userName",ursname);
+            window.location.href="movie3.html"
+        })
+        .catch((err) =>{
+            console.log("err: ",err);
+        })
+     }
+    </script>
+    </div>
+</body>
+</html>
