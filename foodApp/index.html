@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="/css/index.css">
+
+<body>
+    <div id="navbarCon"></div>
+    <div id="containerH"></div>
+    <div id="container"></div>
+
+</body>
+
+</html>
+
+<script type="module">
+    let randContainer=document.getElementById("containerH");
+    import navbar from "./components/navbar.js"
+    document.getElementById("navbarCon").innerHTML = navbar();
+
+    import { getData, append } from "./js/showData.js"
+
+    function search(keyS) {
+
+        let response = getData(`https://themealdb.com/api/json/v1/1/search.php?s=${keyS}`);
+        response
+            .then((res) => {
+                let container = document.getElementById("container");
+                container.innerHTML = null;
+                randContainer.innerHTML=null;
+                append(res, container);
+
+            });
+
+    }
+
+    let Psearch = document.getElementById("searchItem");
+    Psearch.onkeyup = function (e) {
+        if (e.keyCode === 13) {
+            console.log(e.target.value);
+            search(e.target.value);
+        }
+    }
+
+    async function showRand() {
+        let res2 = await fetch(`https://themealdb.com/api/json/v1/1/categories.php`);
+        let data2 = await res2.json();
+        console.log(data2.categories)
+        appendRan(data2.categories);
+    }
+    showRand();
+
+    function appendRan(el){
+        el.forEach(element => {
+            let div=document.createElement("div");
+            div.style.border="4px solid red";
+            div.style.backgroundColor="#59415a";
+            div.style.cursor="pointer";
+            let img=document.createElement("img");
+            img.src=element.strCategoryThumb
+            let title=document.createElement('p');
+            title.innerText=element.strCategory;
+            title.style.textAlign="center";
+            title.style.color="white";
+            title.style.fontSize="22px";
+            div.append(img,title);
+            randContainer.append(div);
+        });
+    }
+</script>

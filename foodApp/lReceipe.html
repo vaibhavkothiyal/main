@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="/css/index.css">
+<body>
+    <div id="navbarCon"></div>
+    <div id="container"></div>
+</body>
+</html>
+
+<script type="module">
+    import navbar from "./components/navbar.js"
+    document.getElementById("navbarCon").innerHTML=navbar();
+
+    import {getData,append} from "./js/showData.js"
+
+    let response = getData(`https://themealdb.com/api/json/v1/1/search.php?s=Matar Paneer`);
+    response
+    .then((res)=>{
+        let container=document.getElementById("container");
+        append(res,container);
+    });
+
+    function search(keyS) {
+        
+        let response = getData(`https://themealdb.com/api/json/v1/1/search.php?s=${keyS}`);
+        response
+            .then((res) => {
+                let container = document.getElementById("container");
+                container.innerHTML=null;
+                append(res, container);
+                
+            });
+            
+    }
+
+    let Psearch = document.getElementById("searchItem");
+    Psearch.onkeyup = function (e) {
+        if (e.keyCode === 13) {
+            console.log(e.target.value);
+            search(e.target.value);
+        }
+    }
+
+
+</script>
