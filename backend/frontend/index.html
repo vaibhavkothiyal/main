@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #styleDiv {
+            width: 13%;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h1>Add Product</h1>
+    <div id="styleDiv">
+        <input type="text" name="" id="id" placeholder="Enter id">
+        <input type="text" name="" id="name" placeholder="Enter name">
+        <input type="text" name="" id="price" placeholder="Enter price">
+        <button onclick="addProd()">Add Product</button>
+    </div>
+    <h1>Delete product</h1>
+    <div id="styleDiv">
+        <input type="text" name="" id="id2" placeholder="Enter id">
+        <button onclick="delProd()">Delete Product</button>
+    </div>
+    <h1>update Products</h1>
+    <div id="styleDiv">
+        <input type="text" name="" id="id3" placeholder="Enter id to update">
+        <h3>update details</h3>
+        <input type="text" name="" id="name2" placeholder="Enter name">
+        <input type="text" name="" id="price2" placeholder="Enter price">
+        <button onclick="upProd()">Add Product</button>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    // async function getData() {
+    //     let res = await fetch("http://localhost:3000/api/products");
+    //     let data2 = await res.json();
+    //     console.log(data2);
+    // }
+    // getData();
+
+    async function addProd() {
+        let data = {
+            id: document.getElementById("id").value,
+            name: document.getElementById("name").value,
+            price: document.getElementById("price").value
+        }
+        console.log(data);
+
+        try {
+            let res = await fetch("http://localhost:3000/api/products", {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+        }
+
+        catch (e) {
+            console.log(e);
+        }
+
+    }
+    async function delProd() {
+        let delProd = document.getElementById("id2").value;
+        try {
+            let res = await fetch(`http://localhost:3000/api/products/${delProd}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+        }
+
+        catch (e) {
+            console.log(e);
+        }
+    }
+
+    async function upProd() {
+        let upId = document.getElementById("id3").value;
+        let Uname = document.getElementById("name2").value;
+        let Uprice = document.getElementById("price2").value;
+        let Udata = {
+
+        }
+        if (Uname != "") {
+            Udata["name"]=Uname;
+        }
+        if (Uprice != "") {
+            Udata["price"]=Uprice;
+        }
+
+        console.log(Udata);
+        try {
+            let res = await fetch(`http://localhost:3000/api/products/${upId}`, {
+                method: 'PUT',
+                body: JSON.stringify(Udata),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+        }
+
+        catch (e) {
+            console.log(e);
+        }
+    }
+
+</script>
