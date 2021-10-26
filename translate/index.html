@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css"> 
+</head>
+
+<body>
+    <div>
+        <div id="navbarDiv">
+            <span class="material-icons menu">menu</span>
+            <span><img id="img" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c51f.png" alt="">
+            </span>
+            <span id="textTr">Translate</span>
+            <div id="right_icons">
+                <span class="material-icons">apps</span>
+                <span>
+                    <div id="user">V</div>
+                </span>
+            </div>
+        </div>
+
+        <div id="body1">
+            <div id="tranl">
+                <span class="material-icons txtIconColor">translate</span>
+                <span id="textColOfTxt">Text</span>
+            </div>
+            <div id="docu">
+                <span class="material-icons txtIconColor">description</span>
+                <span id="docColOfTxt">Documents</span>
+            </div>
+        </div>
+
+        <div id="body2">
+            <div id="body2T">
+                <span onclick="checkCatog(1)" id="cat1">DETECT LANGUAGE</span>
+                <span onclick="checkCatog(2)" id="cat2">ENGLISH</span>
+                <span onclick="checkCatog(3)" id="cat3">SPANISH</span>
+                <span onclick="checkCatog(4)" id="cat4">FRENCH</span>
+                <select name="" id="from" class="selCato">
+                    <option value="en">English</option>
+                </select>
+                <span onclick="checkCatog(5)" id="cat5">ENGLISH</span>
+                <span onclick="checkCatog(6)" id="cat6">SPANISH</span>
+                <span onclick="checkCatog(7)" id="cat7">HINDI</span>
+                <select name="" id="to" class="selCato">
+                </select>
+            </div>
+            <div id="body2B">
+                <div id="translTxt1" contenteditable="true">
+                </div>
+                <div id="translTxt2" contenteditable="true"></div>
+                <span id="voiceDet" onclick="speakfun()" class="material-icons">mic</span>
+                <!-- <button id="voiceDet" onclick="speakfun()">speak</button> -->
+            </div>
+        </div>
+    </div>
+    <button id="toTranslate" onclick="translSelected()">Translate</button>
+
+</body>
+
+</html>
+
+<script src="index.js"></script>

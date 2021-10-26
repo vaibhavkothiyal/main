@@ -1,0 +1,170 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            /* border: 1px solid red; */
+        }
+
+        #navbarDiv span {
+            /* border: 1px solid red; */
+            vertical-align: top;
+        }
+
+        #navbarDiv {
+            border-bottom: 1px solid rgb(192, 191, 191);
+            padding: 17px;
+        }
+
+        #navbarDiv #img {
+            width: 75px;
+        }
+
+        #navbarDiv #user {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid rgb(104, 100, 100);
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height:29px;
+        }
+
+        #navbarDiv #right_icons {
+            display: inline-block;
+            position: absolute;
+            right: 20px;
+        }
+
+        #navbarDiv #textTr {
+            font-size: 22px;
+            color: rgb(85, 82, 82);
+        }
+
+        .menu {
+            margin-right: 10px;
+            margin-left: 4px;
+            color: rgb(104, 100, 100);
+        }
+
+        .material-icons {
+            margin-right: 10px;
+            color: rgb(104, 100, 100);
+        }
+
+        #userImg {
+            width: 88%;
+        }
+
+        #body1 {
+            height: 100px;
+            border-bottom: 1px solid rgb(192, 191, 191);
+            background-color: #faf9f9;
+        }
+
+        #body1 #tranl,
+        #docu {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #body1 #tranl span,
+        #docu span {
+            vertical-align: top;
+        }
+
+        #body1 #tranl,
+        #docu {
+            margin-top: 20px;
+            border: 1px solid rgb(192, 191, 191);
+            border-radius: 3px;
+            padding: 8px;
+        }
+
+        #body1 #tranl {
+            margin-left: 50px;
+        }
+
+        #body2 {
+            position: relative;
+            bottom: 28px;
+            background-color: white;
+            width: 90%;
+            border-radius: 6px;
+            margin: auto;
+            height: 220px;
+            border: 1px solid rgb(192, 191, 191);
+        }
+
+        #body2 #body2T {
+            height: 45px;
+            border-bottom: 1px solid rgb(192, 191, 191);
+        }
+
+        #body2 #body2B {
+            height: 170px;
+        }
+
+        #body2B div {
+            display: inline-block;
+            vertical-align: top;
+            height: 168px;
+            width: 49%;
+        }
+
+        #body2 #translTxt2 {
+            border-left: 1px solid rgb(192, 191, 191);
+        }
+
+        #translTxt1,
+        #translTxt2 {
+            padding: 10px;
+        }
+
+        .txtIconColor {
+            color: #1967d2;
+            font-size: 20px;
+        }
+
+        #textColOfTxt,
+        #docColOfTxt {
+            color: #1967d2;
+        }
+
+        #body2T span {
+            position: relative;
+            top: 14px;
+            margin: 9px;
+            padding: 5px 0px 10px 0px;
+            cursor: pointer;
+            color: rgb(85, 82, 82);
+        }
+
+        .selCato {
+            position: relative;
+            top: 14px;
+            margin-right: 36px;
+            margin-left: 15px;
+        }
+        #voiceDet{
+            position: relative;
+            bottom: 35px; left: 20px;
+            cursor: pointer;
+        }
+        #toTranslate{
+            width: 100px;
+            margin-left: 45%;
+            padding: 5px;
+            background-color: #407bce;
+            color: white;
+            border: 1px solid white;
+            border-radius: 3px;
+        }
+        #toTranslate:hover{
+            border: 1px solid #407bce;
+        }
