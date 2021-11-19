@@ -1,17 +1,26 @@
 const express= require('express');
 const app=express();
 
+const logger=(req,res,next)=>{
+    req.bb={"api_requested_by": "vaibhav"};
+    console.log(req.method);
+    next();
+}
+
 const data=require("./DATA2.json");
 app.use(express.json());
 
-app.get('/',(req,res)=>{
-    res.send(data);
+app.get('/',logger,(req,res)=>{
+    req.bb.books=data;
+    res.send(req.bb);
 })
 
-app.get('/books/:id',(req,res)=>{
+app.get('/books/:id',logger,(req,res)=>{
     console.log("getting");
     const newData=data.filter((element)=>element.id == req.params.id);
-    res.send(newData);
+    req.bb.books=newData;
+    req.bb.api_requested_by=newData[0].author;
+    res.send(req.bb);
 });
 
 app.post('/books',(req,res)=>{
@@ -35,7 +44,6 @@ app.patch('/books/:id',(req,res)=>{
 
 app.delete('/books/:id',(req,res)=>{
     const newData=data.filter((element)=>element.id != req.params.id);
-    res.send(newData);
 });
 
 
@@ -43,3 +51,16 @@ app.listen(2348,()=>{
     console.log("testing express");
 })
 
+
+// const authorise = (permission) => {
+//     return (req, res, next) => {
+//       const originalSendFunc = res.send.bind(res);
+//       res.send = function (body) {
+//         body.name = "Nrupul Dev";
+//         console.log(body); // do whatever here
+//         return originalSendFunc(body);
+//       };
+//       next();
+//     };
+//   };
+  
