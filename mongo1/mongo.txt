@@ -1,0 +1,12 @@
+> use assignment
+> db.users.insert({first_name:"vaibhav",last_name:"kothiyal",email:"abc@gmail.com",gender:"M",id_address:1234,age:25})
+> db.users.insertMany([{first_name:"ambika",last_name:"varma",email:"abc7@gmail.com",gender:"F",id_address:1240,age:24},{first_name:"vishna",last_name:"nair",email:"abc8@gmail.com",gender:"M",id_address:1241,age:26},{first_name:"komal",last_name:"rawat",email:"abc9@gmail.com",gender:"F",id_address:1242,age:25},{first_name:"varun",last_name:"semwal",email:"abc10@gmail.com",gender:"M",id_address:1243,age:25}])
+> db.users.find({}).pretty()
+> db.users.find({"_id" : ObjectId("619ba31af01b8abda633dee3")})
+> db.users.findOne({age:25})
+> db.users.update({"_id" : ObjectId("619b9b2af01b8abda633ded8")},{$set: {age:24}})
+> db.users.updateMany({gender:"F"},{$set: {gender:"FM"}})
+> db.users.remove({"_id" : ObjectId("619ba31af01b8abda633dee3")})
+> db.users.deleteOne({gender:"M"})
+> db.users.deleteMany({gender:"M"}) 
+> db.dropDatabase()
