@@ -30,4 +30,24 @@ router.post('/multiple',upload.array("userImages",5), async(req,res)=>{
     }
 });
 
+const fs=require('fs');
+
+router.delete('/:id', async(req,res)=>{
+    try{
+        const userGallery=await UserGallery.findById(req.params.id).lean().exec();
+        userGallery.pictures.forEach( async (el)=>{
+            console.log(el);
+            await fs.unlink(`${el}`, (err => {
+            if (err) console.log(err);
+            else {
+              console.log("Deleted file");
+            }
+          }));
+        });
+        res.status(201).send(userGallery);
+    }catch(e){
+        res.status(500).json({message:e.message,status:"Failed"});
+    }
+})
+
 module.exports=router;
