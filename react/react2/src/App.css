@@ -1,0 +1,29 @@
+.div{
+  font-size: 20px;
+}
+
+.li{
+  margin-left: 15px;
+  color: red;
+}
+
+.btnDiv{
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+
+.btnDiv2{
+  width: 130px;
+  display: block;
+  margin: auto;
+}
+
+.dsplCnt{
+  color: red;
+  text-align: center;
+}
+
+.dbl{
+  margin: 0px 30%;
+}
