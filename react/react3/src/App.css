@@ -1,0 +1,21 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.parentDiv{
+  width: 400px;
+  margin: auto;
+}
+
+.li{
+  display: inline-block;
+  color: red;
+}
+
+.listBtn{
+  margin-left: 20px;
+}
+
+.childDiv{
+  margin-top: 15px;
+}
