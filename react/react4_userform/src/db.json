@@ -1,0 +1,189 @@
+{
+  "users": [
+    {
+      "id": "j39x9",
+      "userName": "arun",
+      "age": "22",
+      "address": "ar@gmail.com",
+      "department": "Management",
+      "salary": "112121",
+      "gender": "male",
+      "file": "C:\\fakepath\\20211206_162121-removebg-preview-removebg-preview-modified-modified.png"
+    },
+    {
+      "id": "9GMXe",
+      "userName": "anjali",
+      "age": "19",
+      "address": "an@gmil.com",
+      "department": "Management",
+      "salary": "40000",
+      "gender": "female",
+      "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+    },
+    {
+      "0": {
+        "id": "aaa12",
+        "userName": "vaibhav kothiyal",
+        "age": "24",
+        "address": "Dehradun",
+        "department": "CS",
+        "salary": "1200000",
+        "gender": "male",
+        "file": "c:/fake/file.jpeg"
+      },
+      "1": {
+        "id": "j39x9",
+        "userName": "arun",
+        "age": "22",
+        "address": "ar@gmail.com",
+        "department": "Management",
+        "salary": "112121",
+        "gender": "male",
+        "file": "C:\\fakepath\\20211206_162121-removebg-preview-removebg-preview-modified-modified.png"
+      },
+      "2": {
+        "id": "aRdrP_2",
+        "userName": "rahul",
+        "age": "26",
+        "address": "rh@gmil.com",
+        "department": "Business",
+        "salary": "10000",
+        "gender": "male",
+        "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+      },
+      "3": {
+        "id": "9GMXe",
+        "userName": "anjali",
+        "age": "19",
+        "address": "an@gmil.com",
+        "department": "Management",
+        "salary": "40000",
+        "gender": "female",
+        "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+      },
+      "4": {
+        "id": "1wmJrKX",
+        "userName": "shivani",
+        "age": "21",
+        "address": "uttarakhand",
+        "department": "Management",
+        "salary": "30000",
+        "gender": "female",
+        "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+      },
+      "5": {
+        "id": "qrKzU",
+        "userName": "aman",
+        "age": "27",
+        "address": "delhi",
+        "department": "IT",
+        "salary": "30000",
+        "gender": "male",
+        "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+      },
+      "userName": "vaibhav kothiyal",
+      "age": "24",
+      "address": "dehradun",
+      "department": "CS",
+      "salary": "1200000",
+      "gender": "male",
+      "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg",
+      "id": "eFq7-qx"
+    },
+    {
+      "0": {
+        "id": "j39x9",
+        "userName": "arun",
+        "age": "22",
+        "address": "ar@gmail.com",
+        "department": "Management",
+        "salary": "112121",
+        "gender": "male",
+        "file": "C:\\fakepath\\20211206_162121-removebg-preview-removebg-preview-modified-modified.png"
+      },
+      "1": {
+        "id": "9GMXe",
+        "userName": "anjali",
+        "age": "19",
+        "address": "an@gmil.com",
+        "department": "Management",
+        "salary": "40000",
+        "gender": "female",
+        "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+      },
+      "2": {
+        "0": {
+          "id": "aaa12",
+          "userName": "vaibhav kothiyal",
+          "age": "24",
+          "address": "Dehradun",
+          "department": "CS",
+          "salary": "1200000",
+          "gender": "male",
+          "file": "c:/fake/file.jpeg"
+        },
+        "1": {
+          "id": "j39x9",
+          "userName": "arun",
+          "age": "22",
+          "address": "ar@gmail.com",
+          "department": "Management",
+          "salary": "112121",
+          "gender": "male",
+          "file": "C:\\fakepath\\20211206_162121-removebg-preview-removebg-preview-modified-modified.png"
+        },
+        "2": {
+          "id": "aRdrP_2",
+          "userName": "rahul",
+          "age": "26",
+          "address": "rh@gmil.com",
+          "department": "Business",
+          "salary": "10000",
+          "gender": "male",
+          "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+        },
+        "3": {
+          "id": "9GMXe",
+          "userName": "anjali",
+          "age": "19",
+          "address": "an@gmil.com",
+          "department": "Management",
+          "salary": "40000",
+          "gender": "female",
+          "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+        },
+        "4": {
+          "id": "1wmJrKX",
+          "userName": "shivani",
+          "age": "21",
+          "address": "uttarakhand",
+          "department": "Management",
+          "salary": "30000",
+          "gender": "female",
+          "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+        },
+        "5": {
+          "id": "qrKzU",
+          "userName": "aman",
+          "age": "27",
+          "address": "delhi",
+          "department": "IT",
+          "salary": "30000",
+          "gender": "male",
+          "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg"
+        },
+        "userName": "vaibhav kothiyal",
+        "age": "24",
+        "address": "dehradun",
+        "department": "CS",
+        "salary": "1200000",
+        "gender": "male",
+        "file": "C:\\fakepath\\photo-1519750783826-e2420f4d687f.jpg",
+        "id": "eFq7-qx"
+      },
+      "userName": "unknown",
+      "address": "not known",
+      "id": "Dm4Zbgu"
+    }
+  ]
+}
