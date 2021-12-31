@@ -31,6 +31,9 @@ export const Timer = () => {
                 return p - 1;
             })
         }, 1000);
+        return ()=>{
+            clearInterval(runTimer);
+        }
     }, [strt])
 
     return <>
