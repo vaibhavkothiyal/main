@@ -3,21 +3,21 @@ import './timer.css'
 
 export const Timer = () => {
 
-    const [uInp, setUInp] = useState(0);
     const [strt, setNum] = useState(0);
     const [end, setEnd] = useState(0);
+    const [started,setStarted] =useState(false);
 
     const handleInp = (e) => {
         const { name, value } = e.target;
         if (name == "strt")
-            setUInp(value);
+        setNum(value);
         if (name == "end")
             setEnd(value);
     }
 
     const handleSub = (e) => {
         e.preventDefault();
-        setNum(uInp);
+        setStarted(true);
     }
 
     useEffect(() => {
@@ -25,6 +25,7 @@ export const Timer = () => {
         const runTimer = setInterval(() => {
             setNum((p) => {
                 if (p == end) {
+                    setStarted(false);
                     clearInterval(runTimer);
                     return end;
                 }
@@ -34,7 +35,7 @@ export const Timer = () => {
         return ()=>{
             clearInterval(runTimer);
         }
-    }, [strt])
+    }, [started])
 
     return <>
         <div className="timerdiv">
