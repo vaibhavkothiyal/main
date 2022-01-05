@@ -1,0 +1,16 @@
+.navbar{
+    background-color: aqua;;
+    height: 40px;
+    padding: 12px;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+
+}
+
+.loginSts{
+    color: green;
+}
